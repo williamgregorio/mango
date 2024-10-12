@@ -1,16 +1,7 @@
-# passwdman
+# mango
 
-A command line password manager
+mango is a cli tool companion to have in a panel workstation, to one by one tackle tasks.
 
-
-
-
-## questions
-can a user create there own password and generate a password?
-where is password stored, and how is a password safe to use?
-what is visual behavior of a cli dashboard?
-what are problems facing with password?
-should there be history with a password?
 
 
 
