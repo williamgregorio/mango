@@ -21,20 +21,20 @@ void getNameSession(session_t *session) {
 }
 
 void navigation() {
+  printf("1.View active sessions\n");
+  printf("2.Create a new session\n");
 }
 
 void dashboard(response_t *response) {
   printf("--Mango--\n");
+  navigation();
   printf("Enter your choice: \n");
   scanf("%i", &response->response);
 }
 
-int main(void) {
-  session_t session;
-  session.id = 0;
-  getNameSession(&session);
-  printf("Your session id: %i\n", session.id);
+//path location defining
 
+int main(void) {
   response_t response;
   dashboard(&response);
   return 0;
