@@ -19,7 +19,7 @@ typedef struct {
 
 void getNameSession(session_t *session) {
   printf("Name your session: \n");
-  scanf("%s100", session->name);
+  scanf("%s99", session->name);
   printf("Your new session name is: %s\n", session->name);
 }
 
@@ -37,7 +37,13 @@ void dashboard(response_t *response) {
 }
 
 int main(void) {
-  char *getcwd(char *buf, size_t size);
+  char cwd[PATH_MAX];
+  if (getcwd(cwd, sizeof(cwd)) != NULL) {
+    printf("Current directory: %s\n");
+  } else {
+    printf("getcwd() err\n");
+    return 1;
+  }
   response_t response;
   dashboard(&response);
   return 0;
