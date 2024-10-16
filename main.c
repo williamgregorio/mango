@@ -39,7 +39,7 @@ void dashboard(response_t *response) {
 int main(void) {
   char cwd[PATH_MAX];
   if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    printf("Current directory: %s\n");
+    printf("Current directory: %s\n", cwd);
   } else {
     printf("getcwd() err\n");
     return 1;
