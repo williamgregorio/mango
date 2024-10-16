@@ -5,6 +5,9 @@
 // writing to a database that is quick is essential, sqlite3 is of choice.
 
 #include <stdio.h>
+#include <unistd.h>
+#include <linux/limits.h>
+
 typedef struct {
   int id;
   char name[100];
@@ -27,15 +30,14 @@ void navigation() {
 }
 
 void dashboard(response_t *response) {
-  printf("--Mango--\n");
+  printf("--Mango (dev) --\n");
   navigation();
   printf("Enter your choice: \n");
   scanf("%i", &response->response);
 }
 
-//path location defining
-
 int main(void) {
+  char *getcwd(char *buf, size_t size);
   response_t response;
   dashboard(&response);
   return 0;
