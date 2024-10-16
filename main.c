@@ -23,6 +23,7 @@ void getNameSession(session_t *session) {
 void navigation() {
   printf("1.View active sessions\n");
   printf("2.Create a new session\n");
+  printf("3.Exit\n");
 }
 
 void dashboard(response_t *response) {
