@@ -11,6 +11,7 @@
 typedef struct {
   int id;
   char name[100];
+  char path[256];
 } session_t;
 
 typedef struct {
