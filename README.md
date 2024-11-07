@@ -1,6 +1,9 @@
 # mango
 
-mango is a cli tool companion to have in a panel workstation, to one by one tackle tasks.
+## Purpose
+mango is a command line interface for completing tasks using a purposeful language to shape thoughts and actions in programming based environment. 
+
+
 
 
 
