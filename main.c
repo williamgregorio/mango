@@ -25,9 +25,9 @@ void enableRawMode() {
   atexit(disableRawMode);
 
   struct termios raw = orig_termios;
-  raw.c_lflag &= ~(BRKINT | ICRNL | ISTRIP | IXON);
-  raw.c_lflag &= ~(OPOST);
-  raw.c_lflag &= ~(CS8);
+  raw.c_iflag &= ~(BRKINT | ICRNL | ISTRIP | IXON);
+  raw.c_oflag &= ~(OPOST);
+  raw.c_cflag &= ~(CS8);
   raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);
   raw.c_cc[VMIN] = 0;
   raw.c_cc[VTIME] = 1;
@@ -45,6 +45,10 @@ char editorReadKey() {
   return c;
 }
 
+void editorRefreshScreen() {
+  write(STDIN_FILENO, "\x1b[2J]", 4);
+}
+
 void editorProcessKeypress() {
   char c = editorReadKey();
 
@@ -59,6 +63,7 @@ int main() {
   enableRawMode();
 
   while (1) {
+    editorRefreshScreen();
     editorProcessKeypress();
   }
   return 0;
