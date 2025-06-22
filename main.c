@@ -151,7 +151,7 @@ int getWindowSize(int *rows, int *cols) {
 
 void editorOpen() {
   char *line = "Mango";
-  ssize_t linelen = 13;
+  ssize_t linelen = 5;
 
   E.row.size = linelen;
   E.row.chars = malloc(linelen + 1);
