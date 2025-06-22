@@ -11,10 +11,10 @@
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 enum editorKey {
-  ARROW_LEFT = 'h',
-  ARROW_RIGHT = 'l',
-  ARROW_UP = 'k',
-  ARROW_DOWN = 'j',
+  ARROW_LEFT = 1000,
+  ARROW_RIGHT,
+  ARROW_UP,
+  ARROW_DOWN,
 };
 
 struct editorConfig {
@@ -55,7 +55,7 @@ void enableRawMode() {
   if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw) == -1) die("tcsetattr");
 }
 
-char editorReadKey() {
+int editorReadKey() {
   int nread;
   char c;
   while ((nread = read(STDIN_FILENO, &c, 1)) != 1) {
@@ -177,25 +177,33 @@ void editorRefreshScreen() {
   abFree(&ab);
 }
 
-void editorMoveCursor(char key) {
+void editorMoveCursor(int key) {
   switch (key) {
     case ARROW_LEFT:
-      E.cx--;
+      if (E.cx != 0) {
+        E.cx--;
+      }
       break;
     case ARROW_RIGHT:
-      E.cx++;
+      if (E.cx != E.screencols -1) {
+        E.cx++;
+      }
       break;
     case ARROW_UP:
-      E.cy--;
+      if (E.cy != 0) {
+        E.cy--;
+      }
       break;
     case ARROW_DOWN:
-      E.cy++;
+      if (E.cy != E.screenrows - 1) {
+        E.cy++;
+      }
       break;
   }
 }
 
 void editorProcessKeypress() {
-  char c = editorReadKey();
+  int c = editorReadKey();
 
   switch (c) {
     case CTRL_KEY('q'):
